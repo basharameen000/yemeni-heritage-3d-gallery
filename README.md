@@ -1,7 +1,10 @@
-﻿# المتحف والمعرض الافتراضي التراثي اليمني ثلاثي الأبعاد 🏛️🇾🇪
+# المتحف والمعرض الافتراضي التراثي اليمني ثلاثي الأبعاد 🏛️🇾🇪
 ## Ancient Yemeni Heritage 3D Virtual Gallery & Museum
 
 معرض ومتحف افتراضي تفاعلي ثلاثي الأبعاد (WebGL / Three.js) يجسد الهوية المعمارية والتراثية اليمنية الأصيلة بروح تاريخية عتيقة، ويحتوي على قاعة عرض فخمة تضم 11 عملاً فنياً ولوحة تراثية بجودة 8K وأبعاد متحفية عملاقة.
+
+> 🌐 **رابط المعرض المباشر (Live Demo on GitHub Pages):**  
+> **[https://basharameen000.github.io/yemeni-heritage-3d-gallery/](https://basharameen000.github.io/yemeni-heritage-3d-gallery/)**
 
 ---
 
