@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المتحف والمعرض التراثي اليمني العتيق 3D | The Ancient Yemeni Heritage Museum</title>
+  <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+  <!-- 3D Canvas Mount Point -->
+  <div id="canvas-container"></div>
+
+  <!-- Interaction Crosshair -->
+  <div id="crosshair"></div>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="gallery-branding">
+      <div class="gallery-title">
+        <span>المتحف والمعرض التراثي اليمني العتيق • Ancient Yemeni Museum</span>
+        <span class="badge-live">3D HERITAGE</span>
+      </div>
+      <div class="gallery-sub">عقود حجر الحبش، سقف الجذوع، التنور، الرحى، الفخار، القمريات والمفرج الصنعاني</div>
+    </div>
+
+    <div class="top-controls">
+      <button id="btn-autopilot" class="btn-glass">
+        <span>🎬</span> جولة سينمائية (Autopilot)
+      </button>
+      <button id="btn-audio" class="btn-glass">
+        <span>🔊</span> الصوت: يعمل
+      </button>
+      <button id="btn-fullscreen" class="btn-glass">
+        <span>⛶</span> ملء الشاشة
+      </button>
+    </div>
+  </header>
+
+  <!-- Controls Hints Bottom-Left -->
+  <div class="hints-card">
+    <div class="hints-grid">
+      <div class="hint-item"><span class="kbd">W A S D</span> للتحرك</div>
+      <div class="hint-item"><span class="kbd">الماوس</span> للنظر والتوجيه</div>
+      <div class="hint-item"><span class="kbd">Shift</span> للجري السريع</div>
+      <div class="hint-item"><span class="kbd">نقر / Click</span> لفحص اللوحات والتحف</div>
+    </div>
+  </div>
+
+  <!-- Minimap HUD Bottom-Right -->
+  <div class="minimap-card">
+    <div class="minimap-header">
+      <span>مخطط الصالة الحجرية (2D)</span>
+      <span style="color:#d4af37">● اللوحات والتحف</span>
+    </div>
+    <canvas id="minimap-canvas" width="146" height="165"></canvas>
+  </div>
+
+  <!-- Artwork Inspection Modal Dialog -->
+  <div id="artwork-modal" class="artwork-modal">
+    <div class="modal-content">
+      <div class="modal-img-container">
+        <img id="modal-img" src="" alt="Artwork">
+      </div>
+      <div class="modal-info">
+        <div>
+          <h2 id="modal-title" class="modal-title"></h2>
+          <div id="modal-artist" class="modal-artist"></div>
+          <div class="modal-specs">
+            <div><strong>الخامة:</strong> <span id="modal-medium"></span></div>
+          </div>
+          <p id="modal-desc" class="modal-desc"></p>
+        </div>
+        <button id="modal-close-btn" class="modal-close-btn">العودة للتجوال (ESC / إغلاق)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Overlay Screen -->
+  <div id="blocker">
+    <div class="instructions-card">
+      <h1>الصالة والمعرض التراثي اليمني العتيق 3D</h1>
+      <p>
+        مرحباً بك في الصالة المصممة بهندسة العمارة اليمنية القديمة والتفاصيل العتيقة.<br>
+        عقود حجر الحبش، سقف جذوع السدر، التنور الطيني وموقد النار، الرحى الحجرية، الجرار الفخارية، حصر وأطباق الخوص، القمريات الشاهقة، والمفرج الصنعاني.
+      </p>
+      <button class="start-action-btn">انقر هنا للدخول وبدء التجوال التراثي ➔</button>
+    </div>
+  </div>
+
+  <!-- Libraries & Application Scripts (100% Local & Offline) -->
+  <script src="js/three.min.js"></script>
+  <script src="js/PointerLockControls.js"></script>
+  <script src="js/gallery_builder.js"></script>
+  <script src="js/controls_tour.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
