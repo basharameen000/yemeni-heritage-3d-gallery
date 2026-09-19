@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg-glass: rgba(18, 20, 26, 0.78);
   --border-glass: rgba(255, 255, 255, 0.14);
   --accent: #d4af37;
@@ -367,3 +367,82 @@ body, html {
   box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
   pointer-events: none;
 }
+
+/* Author Badge in Start Screen */
+.instructions-author-badge {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-bottom: 22px;
+  color: #f1f5f9;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.instructions-author-badge strong {
+  color: var(--accent);
+}
+
+/* Permanent Intellectual Property Watermark Bar */
+.copyright-watermark-bar {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(11, 13, 17, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  backdrop-filter: blur(10px);
+  padding: 7px 22px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 40;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  user-select: none;
+  pointer-events: none;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.copyright-watermark-bar strong {
+  color: #f8fafc;
+}
+
+.copyright-watermark-bar .sep {
+  color: #d4af37;
+  opacity: 0.6;
+}
+
+.copyright-watermark-bar .warning-text {
+  color: #e2e8f0;
+  font-size: 0.72rem;
+  opacity: 0.85;
+}
+
+/* Modal Copyright Notice */
+.modal-copyright-notice {
+  margin-top: 14px;
+  padding: 8px 12px;
+  background: rgba(212, 175, 55, 0.07);
+  border-right: 3px solid var(--accent);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+
+.modal-copyright-notice strong {
+  color: var(--accent);
+}
+
+/* Global Content Protection */
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: auto;
+}
+

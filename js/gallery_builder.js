@@ -21,6 +21,7 @@ class GalleryBuilder {
     this.buildLightingAndGodRays();
     this.buildHeritageProps(); // Tannour, Reha Mill, Pottery, Woven Plates & Mats
     this.buildArtworks();
+    this.buildDedicationPlaque();
     return {
       colliders: this.colliders,
       interactableArtworks: this.interactableArtworks
@@ -762,6 +763,158 @@ class GalleryBuilder {
       this.interactableArtworks.push(canvasMesh);
     });
   }
+
+  buildDedicationPlaque() {
+    const plaqueGroup = new THREE.Group();
+
+    // 1. Generate High-Res Plaque Canvas Texture
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 640;
+    const ctx = canvas.getContext('2d');
+
+    // Background Gradient (Deep Obsidian Bronze)
+    const bgGrad = ctx.createLinearGradient(0, 0, 1024, 640);
+    bgGrad.addColorStop(0, '#1c1813');
+    bgGrad.addColorStop(0.5, '#12100d');
+    bgGrad.addColorStop(1, '#0a0907');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, 1024, 640);
+
+    // Gold Double Border
+    ctx.strokeStyle = '#d4af37';
+    ctx.lineWidth = 8;
+    ctx.strokeRect(20, 20, 984, 600);
+    ctx.lineWidth = 3;
+    ctx.strokeRect(32, 32, 960, 576);
+
+    // Corner Ornaments
+    ctx.fillStyle = '#d4af37';
+    const drawCorner = (cx, cy) => {
+      ctx.beginPath();
+      ctx.arc(cx, cy, 12, 0, Math.PI * 2);
+      ctx.fill();
+    };
+    drawCorner(44, 44);
+    drawCorner(980, 44);
+    drawCorner(44, 596);
+    drawCorner(980, 596);
+
+    // Typography
+    ctx.textAlign = 'center';
+
+    // Title (Arabic)
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold 40px "Cairo", "Segoe UI", Arial, sans-serif';
+    ctx.fillText('المتحف والمعرض التراثي اليمني العتيق 3D', 512, 110);
+
+    // Subtitle (English)
+    ctx.fillStyle = '#d4af37';
+    ctx.font = '600 22px "Segoe UI", Arial, sans-serif';
+    ctx.fillText('ANCIENT YEMENI HERITAGE VIRTUAL MUSEUM', 512, 155);
+
+    // Divider
+    ctx.strokeStyle = 'rgba(212, 175, 55, 0.5)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(200, 185);
+    ctx.lineTo(824, 185);
+    ctx.stroke();
+
+    // Research & Curation Attribution
+    ctx.fillStyle = '#e2e8f0';
+    ctx.font = 'normal 26px "Cairo", "Segoe UI", Arial, sans-serif';
+    ctx.fillText('فكرة وبحث وتصميم وتوثيق:', 512, 240);
+
+    // Author Name Highlight
+    ctx.fillStyle = '#ffffff';
+    ctx.font = 'bold 46px "Cairo", "Segoe UI", Arial, sans-serif';
+    ctx.shadowColor = 'rgba(212, 175, 55, 0.8)';
+    ctx.shadowBlur = 15;
+    ctx.fillText('بشار أمين عبد الصمد', 512, 305);
+    ctx.font = 'bold 30px "Segoe UI", Arial, sans-serif';
+    ctx.fillText('Bashar Nabil Abdul-Samad', 512, 355);
+    ctx.shadowBlur = 0;
+
+    // Field & Focus
+    ctx.fillStyle = '#cbd5e1';
+    ctx.font = 'normal 24px "Cairo", "Segoe UI", Arial, sans-serif';
+    ctx.fillText('خبير التنمية المستدامة والتراث الثقافي والعدالة المناخية في اليمن', 512, 420);
+
+    // Divider
+    ctx.beginPath();
+    ctx.moveTo(250, 460);
+    ctx.lineTo(774, 460);
+    ctx.stroke();
+
+    // Copyright & Legal Shield
+    ctx.fillStyle = '#f59e0b';
+    ctx.font = 'bold 24px "Cairo", "Segoe UI", Arial, sans-serif';
+    ctx.fillText('🛡️ جميع حقوق الملكية الفكرية والتصميم المعماري والتراثي محفوظة © 2026', 512, 515);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = 'italic 19px "Segoe UI", Arial, sans-serif';
+    ctx.fillText('All Intellectual Property, 3D Architectural Design & Curation Rights Reserved', 512, 555);
+
+    // 2. Texture & Material
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.anisotropy = 16;
+    const plaqueMat = new THREE.MeshStandardMaterial({
+      map: texture,
+      roughness: 0.35,
+      metalness: 0.25
+    });
+
+    // 3. Plaque Mesh (1.6m x 1.0m)
+    const plaqueMesh = new THREE.Mesh(new THREE.PlaneGeometry(1.6, 1.0), plaqueMat);
+    plaqueMesh.position.z = 0.035;
+
+    // 4. Gold Outer Bevel Frame
+    const frameMat = new THREE.MeshStandardMaterial({
+      color: 0xc89b3c,
+      metalness: 0.85,
+      roughness: 0.25
+    });
+    const frameBox = new THREE.Mesh(new THREE.BoxGeometry(1.68, 1.08, 0.06), frameMat);
+    frameBox.castShadow = true;
+    plaqueGroup.add(frameBox);
+    plaqueGroup.add(plaqueMesh);
+
+    // 5. Wooden Easel Stand (حامل لوحة خشبي تراثي)
+    const woodMat = new THREE.MeshStandardMaterial({
+      color: 0x3d2b1f,
+      roughness: 0.85
+    });
+    // Legs
+    const legGeo = new THREE.CylinderGeometry(0.03, 0.03, 2.0);
+    const leftLeg = new THREE.Mesh(legGeo, woodMat);
+    leftLeg.position.set(-0.6, -0.4, -0.1);
+    leftLeg.rotation.z = 0.12;
+    const rightLeg = new THREE.Mesh(legGeo, woodMat);
+    rightLeg.position.set(0.6, -0.4, -0.1);
+    rightLeg.rotation.z = -0.12;
+    const backLeg = new THREE.Mesh(legGeo, woodMat);
+    backLeg.position.set(0, -0.4, -0.45);
+    backLeg.rotation.x = -0.35;
+
+    plaqueGroup.add(leftLeg);
+    plaqueGroup.add(rightLeg);
+    plaqueGroup.add(backLeg);
+
+    // Position at Entryway to the right of the visitor
+    plaqueGroup.position.set(2.4, 1.5, 15.8);
+    plaqueGroup.rotation.y = -Math.PI / 5;
+
+    // Warm Light on Plaque
+    const plaqueLight = new THREE.SpotLight(0xffecd2, 1.8, 8, Math.PI / 4, 0.5);
+    plaqueLight.position.set(2.4, 3.2, 17.0);
+    plaqueLight.target = frameBox;
+    this.scene.add(plaqueLight);
+
+    this.scene.add(plaqueGroup);
+    this.colliders.push(frameBox);
+  }
 }
 
 window.GalleryBuilder = GalleryBuilder;
+

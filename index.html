@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -6,7 +6,7 @@
   <title>المتحف والمعرض التراثي اليمني العتيق 3D | The Ancient Yemeni Heritage Museum</title>
   <link rel="stylesheet" href="css/gallery.css">
 </head>
-<body>
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
   <!-- 3D Canvas Mount Point -->
   <div id="canvas-container"></div>
 
@@ -20,7 +20,7 @@
         <span>المتحف والمعرض التراثي اليمني العتيق • Ancient Yemeni Museum</span>
         <span class="badge-live">3D HERITAGE</span>
       </div>
-      <div class="gallery-sub">عقود حجر الحبش، سقف الجذوع، التنور، الرحى، الفخار، القمريات والمفرج الصنعاني</div>
+      <div class="gallery-sub">توثيق وهندسة: بشار أمين عبد الصمد • عقود حجر الحبش، سقف الجذوع، التنور، الرحى، القمريات والمفرج</div>
     </div>
 
     <div class="top-controls">
@@ -69,10 +69,22 @@
             <div><strong>الخامة:</strong> <span id="modal-medium"></span></div>
           </div>
           <p id="modal-desc" class="modal-desc"></p>
+          <div class="modal-copyright-notice">
+            🛡️ حقوق اللوحة والتصميم المعماري محفوظة للمؤلف: <strong>بشار أمين عبد الصمد © 2026</strong> • يُمنع الاستخدام دون ترخيص مسبق.
+          </div>
         </div>
         <button id="modal-close-btn" class="modal-close-btn">العودة للتجوال (ESC / إغلاق)</button>
       </div>
     </div>
+  </div>
+
+  <!-- Persistent Copyright Watermark Bar -->
+  <div class="copyright-watermark-bar">
+    <span>🛡️ وثيقة تراثية محمية بحقوق الملكية الفكرية الدولية</span>
+    <span class="sep">•</span>
+    <span>تصميم وبحث وتوثيق: <strong>بشار أمين عبد الصمد (Bashar Nabil) © 2026</strong></span>
+    <span class="sep">•</span>
+    <span class="warning-text">All Rights Reserved • يُحظر النسخ أو الاقتباس أو النشر دون إذن خطي</span>
   </div>
 
   <!-- Start Overlay Screen -->
@@ -83,6 +95,10 @@
         مرحباً بك في الصالة المصممة بهندسة العمارة اليمنية القديمة والتفاصيل العتيقة.<br>
         عقود حجر الحبش، سقف جذوع السدر، التنور الطيني وموقد النار، الرحى الحجرية، الجرار الفخارية، حصر وأطباق الخوص، القمريات الشاهقة، والمفرج الصنعاني.
       </p>
+      <div class="instructions-author-badge">
+        🏛️ فكرة وبحث وتصميم: <strong>بشار أمين عبد الصمد (Bashar Nabil Abdul-Samad)</strong><br>
+        <span style="font-size:0.82rem; opacity:0.85;">جميع الحقوق المعمارية والفنية والتراثية محفوظة ومحمية قانونياً © 2026</span>
+      </div>
       <button class="start-action-btn">انقر هنا للدخول وبدء التجوال التراثي ➔</button>
     </div>
   </div>
